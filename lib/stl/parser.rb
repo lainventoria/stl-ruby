@@ -28,9 +28,9 @@ module STL
 		    when /solid (.*)/
 			name = $1
 		    when /facet normal\s+(\S+)\s+(\S+)\s+(\S+)/
-			stack.push Vector[Float($1), Float($2), Float($3)]
+			stack.push Vector[$1.to_f, $2.to_f, $3.to_f]
 		    when /vertex\s+(\S+)\s+(\S+)\s+(\S+)/
-			stack.push Vector[Float($1), Float($2), Float($3)]
+			stack.push Vector[$1.to_f, $2.to_f, $3.to_f]
 		    when /endloop/
 			normal, *vertices = stack.pop(4)
 			triangles.push [normal, Geometry::Triangle.new(*vertices)]
