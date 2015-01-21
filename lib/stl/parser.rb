@@ -43,6 +43,7 @@ module STL
 	# @param io [IO]    the stream to parse
 	# @return [Array]   An array of [Normal, Triangle] pairs
 	def parse_binary(io)
+	    io.seek(80, IO::SEEK_SET)   # Skip the header bytes
 	    count = io.read(4).unpack('V').first
 
 	    faces = []
